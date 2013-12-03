@@ -61,6 +61,17 @@ public class FibonacciIteratorTest {
 		Assert.assertTrue(fibonacciIterator.hasNext());
 	}
 
+	@Test
+	public void deveRetornarOResultadoPassando4ComoNumeroInicialE35ComoFinal() {
+		fibonacciIterator = new FibonacciIterator(4L, 35);
+		
+		List<Long> esperado = Arrays.asList(5L, 8L, 13L, 21L, 34L, 34L);
+		List<Long> recebido = buscaQuantidadeDeElementos(fibonacciIterator, 6); 
+
+		Assert.assertEquals(esperado, recebido);
+		Assert.assertFalse(fibonacciIterator.hasNext());
+	}
+	
 	private List<Long> buscaQuantidadeDeElementos(FibonacciIterator fibonacciIterator, int qtd) {
 		List<Long> recebido = new ArrayList<>();
 		for (int i = 1; i <= qtd; i++) {
