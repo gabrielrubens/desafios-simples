@@ -10,7 +10,8 @@ import org.junit.Test;
 import br.com.gabrielrubens.fibonacci.FibonacciIterator;
 
 public class FibonacciIteratorTest {
-
+	private FibonacciIterator fibonacciIterator;
+	
 	@Test
 	public void deveRetornarZeroParaOPrimeiro() {
 		FibonacciIterator fibonacciIterator = new FibonacciIterator();
@@ -19,7 +20,7 @@ public class FibonacciIteratorTest {
 
 	@Test
 	public void deveRetornarZeroUmEUmParaOsTresPrimeiros() {
-		FibonacciIterator fibonacciIterator = new FibonacciIterator();
+		fibonacciIterator = new FibonacciIterator();
 
 		List<Long> esperado = Arrays.asList(0L, 1L, 1L);
 		List<Long> recebido  = buscaQuantidadeDeElementos(fibonacciIterator, 3);
@@ -29,7 +30,7 @@ public class FibonacciIteratorTest {
 
 	@Test
 	public void deveRetornarOsDesPrimeirosResultDos() {
-		FibonacciIterator fibonacciIterator = new FibonacciIterator();
+		fibonacciIterator = new FibonacciIterator();
 
 		List<Long> esperado = Arrays.asList(0L, 1L, 1L, 2L, 3L, 5L, 8L, 13L,
 				21L, 34L);
@@ -40,7 +41,7 @@ public class FibonacciIteratorTest {
 
 	@Test
 	public void deveRetornarOResultadoPassandoTresComoNumeroInicial() {
-		FibonacciIterator fibonacciIterator = new FibonacciIterator(3L);
+		fibonacciIterator = new FibonacciIterator(3L);
 
 		List<Long> esperado = Arrays.asList(3L, 5L, 8L, 13L, 21L, 34L);
 		List<Long> recebido = buscaQuantidadeDeElementos(fibonacciIterator, 6);
@@ -51,25 +52,18 @@ public class FibonacciIteratorTest {
 
 	@Test
 	public void deveRetornarOResultadoPassandoQuatroComoNumeroInicial() {
-		FibonacciIterator fibonacciIterator = new FibonacciIterator(4L);
-
+		fibonacciIterator = new FibonacciIterator(4L);
+		
 		List<Long> esperado = Arrays.asList(5L, 8L, 13L, 21L, 34L);
 		List<Long> recebido = buscaQuantidadeDeElementos(fibonacciIterator, 5); 
-				/*new ArrayList<>();
-		recebido.add(fibonacciIterator.next());
-		recebido.add(fibonacciIterator.next());
-		recebido.add(fibonacciIterator.next());
-		recebido.add(fibonacciIterator.next());
-		recebido.add(fibonacciIterator.next());*/
 
 		Assert.assertEquals(esperado, recebido);
 		Assert.assertTrue(fibonacciIterator.hasNext());
 	}
 
-	private List<Long> buscaQuantidadeDeElementos(
-			FibonacciIterator fibonacciIterator, int quantidade) {
+	private List<Long> buscaQuantidadeDeElementos(FibonacciIterator fibonacciIterator, int qtd) {
 		List<Long> recebido = new ArrayList<>();
-		for (int i = 1; i <= quantidade; i++) {
+		for (int i = 1; i <= qtd; i++) {
 			recebido.add(fibonacciIterator.next());
 		}
 		return recebido;
