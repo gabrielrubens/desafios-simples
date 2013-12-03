@@ -19,8 +19,9 @@ public class FibonacciIterator implements Iterator<Long> {
 		this.result = inicio;
 	}
 
-	public FibonacciIterator(Long inicio, long fim){
+	public FibonacciIterator(Long inicio, Long fim){
 		this(inicio);
+		if(fim<inicio) throw new IllegalArgumentException("O numero inicial deve ser maior que final");
 		this.usaFim = true;
 		this.fim = fim;
 	}

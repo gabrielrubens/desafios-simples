@@ -63,13 +63,18 @@ public class FibonacciIteratorTest {
 
 	@Test
 	public void deveRetornarOResultadoPassando4ComoNumeroInicialE35ComoFinal() {
-		fibonacciIterator = new FibonacciIterator(4L, 35);
+		fibonacciIterator = new FibonacciIterator(4L, 35L);
 		
 		List<Long> esperado = Arrays.asList(5L, 8L, 13L, 21L, 34L, 34L);
 		List<Long> recebido = buscaQuantidadeDeElementos(fibonacciIterator, 6); 
 
 		Assert.assertEquals(esperado, recebido);
 		Assert.assertFalse(fibonacciIterator.hasNext());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void deveRetornarExceptionCadoONumeroFinalSejaMenorQueOInicial() {
+		fibonacciIterator = new FibonacciIterator(35L, 4L);
 	}
 	
 	private List<Long> buscaQuantidadeDeElementos(FibonacciIterator fibonacciIterator, int qtd) {
