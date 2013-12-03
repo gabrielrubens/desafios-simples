@@ -6,6 +6,8 @@ public class FibonacciIterator implements Iterator<Long> {
 	private Long n1 = 1L;
 	private Long n2 = 1L;
 	private Long result = 0L;
+	private Long fim;
+	private boolean usaFim;
 
 	public FibonacciIterator(){
 		this.n1 = 1L;
@@ -14,11 +16,15 @@ public class FibonacciIterator implements Iterator<Long> {
 	}
 	public FibonacciIterator(Long inicio){
 		this.configuraValores(inicio);
-		/*this.n1 = inicio;
-		this.n2 = 1L;*/
 		this.result = inicio;
 	}
 
+	public FibonacciIterator(Long inicio, long fim){
+		this(inicio);
+		this.usaFim = true;
+		this.fim = fim;
+	}
+	
 	private void configuraValores(Long inicio) {
 		FibonacciIterator fibonacciTemp = new FibonacciIterator();
 		Long anterior = 0L;
@@ -54,7 +60,8 @@ public class FibonacciIterator implements Iterator<Long> {
 	}
 
 	public boolean hasNext() {
-		return true;
+		if(!usaFim) return true;
+		return fim >= (n1+n2);
 	}
 
 	public void remove() {
