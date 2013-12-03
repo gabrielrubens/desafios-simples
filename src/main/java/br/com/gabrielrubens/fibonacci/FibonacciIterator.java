@@ -13,9 +13,26 @@ public class FibonacciIterator implements Iterator<Long> {
 		this.result = 0L;
 	}
 	public FibonacciIterator(Long inicio){
-		this.n1 = inicio;
-		this.n2 = 1L;
+		this.configuraValores(inicio);
+		/*this.n1 = inicio;
+		this.n2 = 1L;*/
 		this.result = inicio;
+	}
+
+	private void configuraValores(Long inicio) {
+		FibonacciIterator fibonacciTemp = new FibonacciIterator();
+		Long anterior = 0L;
+		Long atual = 0L;
+		
+		for (long i=0; i<inicio;i++) {
+			atual = fibonacciTemp.next();
+			if(atual <= inicio) {
+				anterior = atual;
+			}
+		}
+		
+		this.n1 = anterior;
+		this.n2 = fibonacciTemp.next();
 	}
 
 	public Long next() {

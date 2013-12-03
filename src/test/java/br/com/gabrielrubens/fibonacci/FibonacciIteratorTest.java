@@ -50,9 +50,9 @@ public class FibonacciIteratorTest {
 		Assert.assertEquals(esperado, recebido);
 	}
 	
-	/*@Test
-	public void deveRetornarOResultadoPassandoONumeroInicialEFinal() {
-		FibonacciIterator fibonacciIterator = new FibonacciIterator(3L,34L);
+	@Test
+	public void deveRetornarOResultadoPassandoTresComoNumeroInicial() {
+		FibonacciIterator fibonacciIterator = new FibonacciIterator(3L);
 		
 		List<Long> esperado = Arrays.asList(3L,5L,8L,13L,21L,34L);
 		List<Long> recebido = new ArrayList<>();
@@ -61,8 +61,25 @@ public class FibonacciIteratorTest {
 		recebido.add(fibonacciIterator.next());
 		recebido.add(fibonacciIterator.next());
 		recebido.add(fibonacciIterator.next());
+		recebido.add(fibonacciIterator.next());
 		
 		Assert.assertEquals(esperado, recebido);
-		Assert.assertFalse(fibonacciIterator.hasNext());
-	}*/
+		Assert.assertTrue(fibonacciIterator.hasNext());
+	}
+	
+	@Test
+	public void deveRetornarOResultadoPassandoQuatroComoNumeroInicial() {
+		FibonacciIterator fibonacciIterator = new FibonacciIterator(4L);
+		
+		List<Long> esperado = Arrays.asList(5L,8L,13L,21L,34L);
+		List<Long> recebido = new ArrayList<>();
+		recebido.add(fibonacciIterator.next());
+		recebido.add(fibonacciIterator.next());
+		recebido.add(fibonacciIterator.next());
+		recebido.add(fibonacciIterator.next());
+		recebido.add(fibonacciIterator.next());
+		
+		Assert.assertEquals(esperado, recebido);
+		Assert.assertTrue(fibonacciIterator.hasNext());
+	}
 }
